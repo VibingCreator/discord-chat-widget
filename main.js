@@ -59,14 +59,30 @@ ws.on("message", (data) => {
   switch(op) {
     case 10:
       hb.interval = d.heartbeat_interval;
+
       setTimeout(hb.identify, (hb.interval * Math.random()));
 
       break;
     
     case 11:
       console.log("heartbeat ACK");
+      
       break;
     
+    default:
+      break;
+  }
+
+  switch(t) {
+    case "MESSAGE_CREATE": {
+      if (!d.content) return;
+      
+      const message = `[${d.author.username}]: ${d.content}\n`;
+
+      console.log(message);
+
+      break;
+    }
     default:
       break;
   }
