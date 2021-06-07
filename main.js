@@ -1,6 +1,9 @@
 const path = require("path");
 const { app, BrowserWindow, ipcMain } = require("electron");
 
+const WebSocket = require("ws");
+const ws = new WebSocket("wss://gateway.discord.gg/?v=9&encoding=json");
+
 // process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
 const createWindow = () => {
@@ -43,4 +46,16 @@ app.on("window-all-closed", () => {
 
 ipcMain.on("pong", (event, arg) => {
   console.log(arg);
+});
+
+ws.on("open", () => {
+  console.log("opened a connection with the endpoint");
+});
+
+ws.on("message", (data) => {
+  console.log(JSON.parse(data));
+});
+
+ws.on("close", () => {
+  console.log("connection with the endpoint has been terminated");
 });
