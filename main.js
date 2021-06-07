@@ -2,6 +2,7 @@ const path = require("path");
 const { app, BrowserWindow, ipcMain } = require("electron");
 
 const ws = require("./core/WebSocketManager/WebSocketManager.js");
+const hb = require("./core/heartbeat/heartbeat.js");
 
 // process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
@@ -53,7 +54,22 @@ ws.on("open", () => {
 });
 
 ws.on("message", (data) => {
-  console.log(JSON.parse(data));
+  const { t, s, op, d } = JSON.parse(data);
+
+  switch(op) {
+    case 10:
+      hb.interval = d.heartbeat_interval;
+      setTimeout(hb.identify, (hb.interval * Math.random()));
+
+      break;
+    
+    case 11:
+      console.log("heartbeat ACK");
+      break;
+    
+    default:
+      break;
+  }
 });
 
 ws.on("close", () => {
