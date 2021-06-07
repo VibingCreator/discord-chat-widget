@@ -1,0 +1,28 @@
+{
+  "name": "discord-chat-widget",
+  "version": "0.0.1",
+  "description": "A cross-platform desktop widget to display discord chat messages",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VibingCreator/discord-chat-widget.git"
+  },
+  "keywords": [
+    "electron",
+    "secure",
+    "boilerplate"
+  ],
+  "author": "Radosław Miluk <VibingCreator.Workspace@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VibingCreator/discord-chat-widget/issues"
+  },
+  "homepage": "https://github.com/VibingCreator/discord-chat-widget#readme",
+  "devDependencies": {
+    "electron": "^13.1.0"
+  }
+}
