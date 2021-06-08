@@ -74,6 +74,11 @@ ws.on("message", (data) => {
   }
 
   switch(t) {
+    case "READY": 
+      hb.sessionID = d.session_id;
+      
+      break;
+      
     case "MESSAGE_CREATE": {
       if (!d.content) return;
       
