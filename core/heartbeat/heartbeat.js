@@ -11,6 +11,8 @@ class Heartbeat {
     }
 
     keepAlive = () => {
+        if (!ws.isConnected) return;
+        
         ws.send(payloads.hello);
         console.log("sent payload to keep connection alive");
         setTimeout(this.keepAlive, this.interval);
