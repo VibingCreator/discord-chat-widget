@@ -1,8 +1,10 @@
+const config = require("../../config.js");
+
 module.exports = {
     "identify": {
         "op": 2,
         "d": {
-            "token": "<discord-user-token-goes-here>",
+            "token": config.token,
             "properties": {
                 "$os": "linux",
                 "$browser": "disco",
