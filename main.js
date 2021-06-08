@@ -76,10 +76,10 @@ ws.on("message", (data) => {
   switch(t) {
     case "READY": 
       hb.sessionID = d.session_id;
-      
+
       break;
       
-    case "MESSAGE_CREATE": {
+    case "MESSAGE_CREATE":
       if (!d.content) return;
       
       const message = `[${d.author.username}]: ${d.content}\n`;
@@ -87,7 +87,7 @@ ws.on("message", (data) => {
       console.log(message);
 
       break;
-    }
+      
     default:
       break;
   }
